@@ -17,7 +17,8 @@ In the  field of Deep Learning there is a list of powerful architectures for ima
   9. GoogLeNet
   10. ENet
   #### 11. U-Net [Newest]
-  
+ 
+## [Neural Network Architectures](https://towardsdatascience.com/neural-network-architectures-156e5bad51ba) 
 <p aling="center">
   <img alt="" src="https://chaosmail.github.io/images/deep-learning/top1-param.png">
 </p>
