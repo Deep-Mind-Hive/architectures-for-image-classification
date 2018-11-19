@@ -42,6 +42,51 @@ The easiest way to judge the neural network is by its:
  [read more...](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)
  
  
+ 
+ ## 2. Model
+The U-Net architecture is built upon the Fully Convolutional Network and modified in a way that it yields better segmentation in medical imaging. Compared to FCN-8, the two main differences are:
+  1. U-net is symmetric,
+  2. the skip connections between the downsampling path and the upsampling path apply a concatenation operator instead of a sum. These skip connections intend to provide local information to the global information while upsampling.
+ 
+ 
+Because of its symmetry, the network has a large number of feature maps in the upsampling path, which allows to transfer information. By comparison, the basic FCN architecture only had number of classes feature maps in its upsampling path.
+
+The U-Net owes its name to its symmetric shape, which is different from other FCN variants.
+
+U-Net architecture is separated in 3 parts:
+
+  1. The contracting/downsampling path
+  2. Bottleneck
+  3. The expanding/upsampling path
+
+
+
+## Contracting/Downsampling path
+
+The contracting path is composed of 3 blocks. Each block is composed of:
+
+  1. 3x3 Convolution Layer + activation function (with batch normalization)
+  2. 3x3 Convolution Layer + activation function (with batch normalization)
+  3. 2x2 Max Pooling
+  
+
+
+## Expanding /Upsampling path:
+
+The expanding path is also composed of 4 blocks. Each of these blocks is composed of
+
+  1. Deconvolution layer with stride 2
+  2. Concatenation with the corresponding cropped feature map from the contracting path
+  3. 3x3 Convolution layer + activation function (with batch normalization)
+  4. 3x3 Convolution layer + activation function (with batch normalization)
+
+
+
+## Bottom Neck path
+
+This part of the network is between the contracting and expanding paths. The bottleneck is built from simply 2 convolutional layers (with batch normalization), with dropout.
+
+
 
 ## Advantages
 
